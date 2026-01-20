@@ -23,16 +23,17 @@ app.get("/students",(req,res)=>{
 //post
 
 app.post("/students", (req, res) => {
-  const student = req.body;   
+  // const student = req.body;   
 
-  if (!student.id || !student.name) {
-    res.status(400).json({ message: "Send proper data" });
-    return;
-  }
+//  if (!student.id || !student.name) {
+//     res.status(400).json({ message: "Send proper data" });
+//      return;
+//    }
 
   const data = readData();   
 
-  data.students.push(student); 
+  data.students.push(req.body); 
+    res.send({ message: "Student added" });
 
   writeData(data);            
 
